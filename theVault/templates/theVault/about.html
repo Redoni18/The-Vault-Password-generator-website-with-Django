@@ -1,0 +1,12 @@
+{% extends "theVault/base.html" %}
+{% block content %}
+         <div class="position-relative overflow-hidden p-2 p-md-5 m-md-5 text-center bg-light">
+         <div class="col-md-5 p-lg-5 mx-auto my-3">
+           <h1 class="display-4 font-weight-normal">The Vault</h1>
+           <p class="lead font-weight-normal">The Vault is a website that allows users to generate and save secure passwords that they can later use in their social media accounts</p>
+           <a class="btn btn-success" href="{% url 'passwords-page' user.username %}">Get started</a>
+         </div>
+         <div class="product-device shadow-sm d-none d-md-block"></div>
+         <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+       </div>
+{% endblock content %}

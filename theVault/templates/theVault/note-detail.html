@@ -1,0 +1,46 @@
+{% extends "theVault/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="bg-white">
+  <div class="container">
+    <div class="text-center py-5">
+      <img src="{{user.profile.image.url}}" class="ui-w-100 rounded-circle" style="width: 150px;height: 150px;">
+      <div>
+        <br>
+        <article class="media content-section">
+             <img class="rounded-circle article-img" src="{{ object.profile.image.url }}">
+             <div class="media-body">
+               <div class="article-metadata">
+                 <h4 class="font-weight-normal my-4">{{ object.vault_user_profile }}</h4>
+                 <small class="text-muted">{{object.koha_posti|date:"F d, Y" }}</small>
+               </div>
+                {% if object.titulli %}
+                   <h2 class="text-center font-weight-light my-4"><a class="article-title">{{object.titulli}}</a></h2>
+                 {% endif %}
+                 {% if object.files %}
+                   <a href="{{ object.files.url }}" target="_blank">{{object.files}}</a>
+                 {% endif %}
+               <p class="article-content" style="word-break: break-all;">{{object.pershkrimi|urlize}}</p>
+             </div>
+             
+           </article>
+
+      <div class="col-md-8 col-lg-6 col-xl-5 p-0 mx-auto">
+            <div class="btn-group mt-4">
+              <button class="btn btn-primary dropdown-toggle ml-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More Options
+              </button>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{% url 'update-note' object.id %}">Edit</a>
+                  <a class="dropdown-item" href="{% url 'delete-note' object.id %}">Delete</a>
+                </div>
+            </div>
+                  
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock content %}

@@ -1,0 +1,72 @@
+{% extends "theVault/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="bg-white">
+  <div class="container">
+    <div class="text-center py-5">
+      <img src="{{user.profile.image.url}}" class="ui-w-100 rounded-circle" style="width: 150px;height: 150px;">
+
+      <div class="col-md-8 col-lg-6 col-xl-5 p-0 mx-auto">
+        <h4 class="font-weight-normal my-4">{{user.username}}</h4>
+
+        <div class="text-muted mb-4">
+          <p class="text-center font-weight-normal my-4">{{user.first_name}} {{user.last_name}}</p>
+          <p class="text-center font-weight-normal my-4">{{user.email}}</p>
+          <a href="{% url 'passwords-page' user.username %}">
+            <p class="text-center font-weight-normal my-4 text-dark">{{num_passwords}} passwords created so far</p>
+          </a>
+          <a href="{% url 'notes-page' user.username %}">
+          <p class="text-center font-weight-normal my-4 text-dark">{{num_notes}} notes created so far</p>
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Update your information</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="modal-body mx-3">
+              <div class="md-form mb-5">
+                  {{user_form|crispy}}
+              </div>
+
+              <div class="md-form mb-4">
+                  {{profile_form|crispy}}             
+              </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button class="btn btn-primary">Save</button>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+            <small class="text-muted">
+                    <a href="{% url 'password_reset' %}">Change password!</a>
+                </small>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Update info</a>
+      </div>
+
+</div>
+
+
+
+
+  
+{% endblock content %}

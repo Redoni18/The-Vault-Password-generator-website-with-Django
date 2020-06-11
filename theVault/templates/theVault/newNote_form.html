@@ -1,0 +1,32 @@
+{% extends "theVault/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create a new note</h3></div>
+                                    <div class="card-body">
+                                        <form method="POST" enctype="multipart/form-data">
+                                          {% csrf_token %}
+                                            <div class="form-group">
+                                              {{form|crispy}}
+                                          </div>
+                                            <div class="form-group mt-4 mb-0">
+                                              <button class="btn btn-primary btn-block" type="submit">
+                                                    Save
+                                              </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+{% endblock content %}

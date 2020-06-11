@@ -1,0 +1,60 @@
+{% extends "theVault/base.html" %}
+{% block content %}
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+      
+       <div class="position-relative overflow-hidden p-2 p-md-2 m-md-2 text-center bg-light">
+         <div class="col-md-5 p-lg-5 mx-auto my-3">
+           <h1 class="display-4 font-weight-normal">The Vault</h1>
+           <p class="lead font-weight-normal">The Vault is a website that allows users to generate and save secure passwords that they can later use in their social media accounts</p>
+           <a class="btn btn-success" href="{% url 'sign-up' %}">Get started</a>
+         </div>
+         <div class="product-device shadow-sm d-none d-md-block"></div>
+         <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+       </div>
+
+       <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+         <div class="bg-dark w-50 mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+           <div class="my-3 py-3">
+             <h2 class="display-5">Sign up</h2>
+           </div>
+           <div class="bg-light shadow-sm mx-auto" style="width: 100%; height: 300px; border-radius: 21px 21px 0 0;">
+             <i class="fas fa-user-plus fa-7x" style="color: black; margin-top: 15%;"></i>
+             <div>
+              <br>
+             <a class="btn btn-primary" href="{% url 'sign-up' %}">Sign up</a>
+             </div>
+             
+           </div>
+         </div>
+         <div class="bg-dark w-50 mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden text-white">
+           <div class="my-3 p-3">
+             <h2 class="display-5">Sign in</h2>
+           </div>
+           <div class="bg-light shadow-sm mx-auto" style="width: 100%; height: 300px; border-radius: 21px 21px 0 0;">
+             <i class="fas fa-sign-in-alt fa-7x" style="color: black;margin-top: 15%;"></i>
+             <div>
+              <br>
+             <a class="btn btn-primary" href="{% url 'login' %}">Sign in</a>
+             </div>
+           </div>
+         </div>
+       </div>
+
+
+{% endblock content %}

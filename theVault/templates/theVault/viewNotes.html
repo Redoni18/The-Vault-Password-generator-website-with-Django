@@ -1,0 +1,30 @@
+{% extends "theVault/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+  <a href="{% url 'create-note' %}" class="btn btn-primary btn-rounded btn-sm mt-4 ml-3">Make a new note</a>
+        <div class="container">
+          <div class="row">
+             {% for note in vault_NewNotes %}
+             <a href="{% url 'detail' note.id %}" class="text-dark">
+              <div class="col-md-3 col-sm-5">
+                
+                
+                <div class="card" style='margin-top: 8%;background-color: #e6e8e6;margin-bottom: 8%;'>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ note.titulli }}</h5>
+                    <div class="article-metadata">
+                      <small class="text-muted">{{note.koha_posti|date:"F d, Y, H:i" }}</small>  
+                    </div>
+                    <a href="{% url 'note-detail' note.id %}" class="btn btn-primary btn-sm">View Full Note</a>
+                     </div>
+                </div>
+              
+            </div>
+          </a>
+
+          {% endfor %}
+      </div>
+
+
+{% endblock content %}
