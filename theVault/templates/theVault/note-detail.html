@@ -1,6 +1,8 @@
 {% extends "theVault/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+
+
 <div class="bg-white">
   <div class="container">
     <div class="text-center py-5">
@@ -17,10 +19,11 @@
                 {% if object.titulli %}
                    <h2 class="text-center font-weight-light my-4"><a class="article-title">{{object.titulli}}</a></h2>
                  {% endif %}
+                 <p class="article-content" style="word-break: break-all;">{{object.pershkrimi|safe|urlize}}</p>
                  {% if object.files %}
                    <a href="{{ object.files.url }}" target="_blank">{{object.files}}</a>
                  {% endif %}
-               <p class="article-content" style="word-break: break-all;">{{object.pershkrimi|urlize}}</p>
+               
              </div>
              
            </article>

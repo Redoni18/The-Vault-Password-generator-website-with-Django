@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from PIL import Image
 from django.urls import reverse
-
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 
@@ -32,7 +32,7 @@ class NewPassword(models.Model):
 
 class NewNote(models.Model):
 	titulli = models.CharField(max_length=50, null= True, blank = True,verbose_name="Title")
-	pershkrimi = models.TextField(max_length=1000, null= True, blank = True,verbose_name="Content")
+	pershkrimi = RichTextUploadingField(max_length=1000, null= True, blank = True, verbose_name="Content", config_name='default')
 	koha_posti = models.DateTimeField(default=timezone.now)
 	files = models.FileField(upload_to = 'files', null= True, blank = True)
 	vault_user_profile = models.ForeignKey(User, on_delete=models.CASCADE)
